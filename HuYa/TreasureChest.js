@@ -13,6 +13,7 @@ function GetBeans(BeanType){
          };
 
          // Start to run
+         
         ClickTreasureChest();
         sleep(1000);
         ClickBoxGift();
@@ -20,4 +21,5 @@ function GetBeans(BeanType){
 };
 
 GetBeans("Sliver");
+
 

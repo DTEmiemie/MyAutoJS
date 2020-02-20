@@ -12,11 +12,31 @@ function GetBeans(BeanType){
              click("领取");
          };
 
-         // Start to run
-         
+         function ClickAds() {
+             if (className("TextView").textContains("看15秒视频领200银豆").exists()) {
+                function GetBeansFromAds() {
+                    click("立即领取")
+                    sleep(1700);
+                    click("关闭广告");
+                    sleep(1000);
+                };
+
+                 GetBeansFromAds();
+                 while (className("TextView").text("再领一次").exists()) {
+                     click("再领一次");
+
+                 };
+             };
+         };
+
+         // Start to run    
         ClickTreasureChest();
         sleep(1000);
+        // To get boxes of gift
         ClickBoxGift();
+        // [3th step] To get Sliver Beans from Ads
+        ClickAds();
+
     };
 };
 

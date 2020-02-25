@@ -26,7 +26,7 @@ function ClickToLikeInterface () {
     ToLogin();
     // If the interface can click the avatar to call out the menu
     if (className("Button").desc("帐户及设置").clickable().exists()) {
-        toast("帐户已登录，准备进入回赞页面");
+        toast("Account is logged in, ready to enter like interface.");
         FromHomepageToLikeInterface();
     };
 
@@ -76,7 +76,6 @@ function Like() {
             }
             
             // This first item will be perfected next time
-
             if (ExitWay == "Exit the script and QQ") {
                 function ClickButton(button) {
                     button.findOnce.click()
@@ -95,7 +94,7 @@ function Like() {
 
 
         // Thread variables
-        Ways = ["Just exit the script","Exit script and QQ"];
+        Ways = ["Just exit the script","Exit the script and QQ"];
         ExitWay = Ways[0];
         
         // Thread Main
@@ -109,6 +108,8 @@ function Like() {
             }
         })
     })
+    // Wait IfLimit thread to run
+    IfLimit.waitFor();
 
     
     // ===Main===

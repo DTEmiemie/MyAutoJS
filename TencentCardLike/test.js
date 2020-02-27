@@ -6,6 +6,7 @@ auto();
 
 */
 
+
 function ClickToLikeInterface () {
     function ToLogin() {
         if (className("ImageView").id("login").clickable().exists()) {
@@ -13,10 +14,12 @@ function ClickToLikeInterface () {
             sleep(2000); // Load after login
         };
     };
+
     // Go to the like interface from homepage
     function FromHomepageToLikeInterface() {
         className("Button").desc("帐户及设置").clickable().findOne().click();
         sleep(1000); // Delay 1s
+        IfCancelPopUp();
         click("DTEmiemie");
         sleep(1000); // Delay 1s
         className("RelativeLayout").descEndsWith("次赞").clickable().findOnce().click();
@@ -40,26 +43,40 @@ function Like() {
     function ScrollDownProfile() {
         className("AbsListView").scrollable().scrollForward();
     };
-
     function ClickLike() {
         className("ImageView").desc("赞").click();
     };
-    
     function ShowMore() {
         click("显示更多");
     };
 
-    function IfCancel() {
-        let CancelButton = className("TextView").textContains("取消");
-        if (CancelButton.exists()) {
-            click("取消");
-            sleep(2000);
-            ShowMore();
-            sleep(4000);
-            ScrollDownProfile();
-            sleep(2000);
+    function IfCancelPopUp() { // id "dialogTitle"(request permision Pop-Up)
+        function One(){
+            let CancelButton = className("TextView").textContains("取消");
+            if (CancelButton.exists()) {
+                click("取消");
+                sleep(2000);
+                ShowMore();
+                sleep(4000);
+                ScrollDownProfile();
+                sleep(2000);
+            }
         };
-    };
+        function Two() {
+            let CancelButton = className("ImageView").textContains("h7s")
+            if (CancelButton.exists()) {
+                click("取消");
+                sleep(2000);
+                ShowMore();
+                sleep(4000);
+                ScrollDownProfile();
+                sleep(2000);
+            }
+        }
+
+    One();
+    Two();
+};
 
 
     // ===variables===
@@ -75,7 +92,7 @@ function Like() {
         for (let i = 0; i < LikeNumber; i++) {
             ClickLike();
             sleep(100);
-            IfCancel();
+            IfCancelPopUp();
         };
         ShowMore();
         ScrollDownProfile();

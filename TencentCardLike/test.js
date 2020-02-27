@@ -2,6 +2,7 @@ auto();
 
 /* To be updated next time:
     1. Search "This first item will be perfected next time"
+    2. Exiting 01 method has a bug
 
 */
 
@@ -65,52 +66,6 @@ function Like() {
     let WhetherToLike = "on";
     // - Custom -
     let LikeNumber = 20;
-
-    // Start to a thread to determine if Likes Reach the Limit of Nearby People
-    let IfLimit = threads.start(function(){
-        auto();
-        function ExitScript(ExitWay){
-            // Ways[0]
-            if (ExitWay == "Just exit the script") {
-                exit();
-            }
-            
-            // This first item will be perfected next time
-            if (ExitWay == "Exit the script and QQ") {
-                function ClickButton(button) {
-                    button.findOnce.click()
-                    sleep(1000);
-                };
-
-                let TitleBtnLeft = className("TextView").id("ivTitleBtnLeft");
-                if (TitleBtnLeft.exists()) {
-                    ClickButton(TitleBtnLeft);
-                    if (TitleBtnLeft.exists()) {
-                        ClickButton(TitleBtnLeft);
-                    }
-                }
-            }
-        }
-
-
-        // Thread variables
-        Ways = ["Just exit the script","Exit the script and QQ"];
-        ExitWay = Ways[0];
-        
-        // Thread Main
-        events.observeToast();
-        events.onToast(function(toast){
-            while (true) {
-                if (toast.getText() === "每天最多给50个附近的人点赞哦。") {
-                    console.log("Likes have been completed");
-                    ExitScript(ExitWay);
-                }
-            }
-        })
-    })
-    // Wait IfLimit thread to run
-    IfLimit.waitFor();
-
     
     // ===Main===
     sleep(500); // To load the like interface (Optional)

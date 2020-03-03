@@ -50,11 +50,7 @@ function Like() {
         click("显示更多");
     };
 
-<<<<<<< HEAD
-    function IfCancelPopUp() { // id "dialogTitle"(request permision Pop-Up)
-=======
     function IfCancelPopUp() {
->>>>>>> Saved
         function One(){
             let CancelButton = className("TextView").textContains("取消");
             if (CancelButton.exists()) {
@@ -66,7 +62,6 @@ function Like() {
                 sleep(2000);
             }
         };
-<<<<<<< HEAD
         function Two() {
             let CancelButton = className("ImageView").textContains("h7s")
             if (CancelButton.exists()) {
@@ -75,22 +70,10 @@ function Like() {
                 ShowMore();
                 sleep(4000);
                 ScrollDownProfile();
-=======
-        function Two() { // Location permission application
-            if (className("TextView").descContains("权限申请").exists()) { // here a bug. please 
-                click("取消");
-                sleep(2000);
-            } else if (className("TextView").textContains("权限申请").exists()) {
-                click("取消");
->>>>>>> Saved
                 sleep(2000);
             }
         }
 
-<<<<<<< HEAD
-    One();
-    Two();
-=======
         function Third() { // I'm not a vip (Limit 10)
             if (className("TextView").textContains("提升点赞数").exists()){
                 className("ImageView").id("h7s").clickable().click();
@@ -100,7 +83,6 @@ function Like() {
     One();
     Two();
     Third();
->>>>>>> Saved
 };
 
 

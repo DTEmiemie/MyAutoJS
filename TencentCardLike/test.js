@@ -1,8 +1,7 @@
 auto();
 
 /* To be updated next time:
-    1. Search "This first item will be perfected next time"
-    2. Exiting 01 method has a bug
+    ...Nothing...
 
 */
 
@@ -22,7 +21,7 @@ function ClickToLikeInterface () {
         IfCancelPopUp();
         click("DTEmiemie");
         sleep(1000); // Delay 1s
-        className("RelativeLayout").descEndsWith("次赞").clickable().findOnce().click();
+        className("FrameLayout").descEndsWith("次赞").clickable().findOnce().click();
     };
 
     launch("com.tencent.mobileqq");
@@ -42,6 +41,7 @@ function Like() {
 
     function ScrollDownProfile() {
         className("AbsListView").scrollable().scrollForward();
+        sleep(1000);
     };
     function ClickLike() {
         className("ImageView").desc("赞").click();
@@ -50,7 +50,11 @@ function Like() {
         click("显示更多");
     };
 
+<<<<<<< HEAD
     function IfCancelPopUp() { // id "dialogTitle"(request permision Pop-Up)
+=======
+    function IfCancelPopUp() {
+>>>>>>> Saved
         function One(){
             let CancelButton = className("TextView").textContains("取消");
             if (CancelButton.exists()) {
@@ -62,6 +66,7 @@ function Like() {
                 sleep(2000);
             }
         };
+<<<<<<< HEAD
         function Two() {
             let CancelButton = className("ImageView").textContains("h7s")
             if (CancelButton.exists()) {
@@ -70,19 +75,39 @@ function Like() {
                 ShowMore();
                 sleep(4000);
                 ScrollDownProfile();
+=======
+        function Two() { // Location permission application
+            if (className("TextView").descContains("权限申请").exists()) { // here a bug. please 
+                click("取消");
                 sleep(2000);
+            } else if (className("TextView").textContains("权限申请").exists()) {
+                click("取消");
+>>>>>>> Saved
+                sleep(2000);
+            }
+        }
+
+<<<<<<< HEAD
+    One();
+    Two();
+=======
+        function Third() { // I'm not a vip (Limit 10)
+            if (className("TextView").textContains("提升点赞数").exists()){
+                className("ImageView").id("h7s").clickable().click();
             }
         }
 
     One();
     Two();
+    Third();
+>>>>>>> Saved
 };
 
 
     // ===variables===
     let WhetherToLike = "on";
     // - Custom -
-    let LikeNumber = 20;
+    let LikeNumber = 10;
     
     // ===Main===
     sleep(500); // To load the like interface (Optional)
